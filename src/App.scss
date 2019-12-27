@@ -1,0 +1,169 @@
+
+@import "~@material/elevation/mdc-elevation";
+
+$yellow_color: #E2BE1F;
+.body{
+  height: 5000px;
+}
+.navbar{
+ 
+  //background-image: linear-gradient(to top right, #0093B8, #0ACFC1);
+  background: #0093B8;
+  border-radius:0;
+  color:white;
+  padding: 0 1rem;
+  margin-bottom: 0.1rem;
+  z-index: 1;
+  opacity: 0.8;
+}
+.nav>li>a{
+  font-weight: 500;
+}
+#branch{
+  font-size: 1rem;
+  margin:0;
+  color:white;
+}
+
+.navbar-header>p{
+  margin:0;
+}
+#projectsHub{
+      font-size: 27px;
+      color: $yellow_color !important;
+      font-weight: 700;
+      margin:0;
+    
+}
+.nav-link{
+  color:white;
+  //padding: 1rem 1rem 0.5rem;
+}
+
+.icon-bar{
+  color: white;
+}
+#myNavbar{
+  margin-top: 0.6em;
+}
+
+.navbar-toggle{
+  margin: 0;
+}
+.active{
+  color: $yellow_color;
+  border-bottom: 2px solid #E2BE1F;
+  background: #007E9E;
+}
+
+.activeTag{
+   background: #007E9E;
+}
+
+
+.marker {
+  display: inline-block;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background: yellow;
+
+}
+.CPEDU{
+  background:#F29C6B;
+  fill:#F29C6B;
+
+}
+.RMPU{
+  background: #BA91A7;
+  fill: #BA91A7;
+
+}
+.CCPU{
+  background: #a3d09b; 
+  fill: #a3d09b; 
+
+}
+.CPEDU_Title{
+  color: #B3734F;
+ 
+  }
+.CCPU_Title{
+  color: #72916D;
+}
+.RMPU_Title{
+  color: #7A5F6E;
+}
+.p_hoverTitle:hover, .p_hoverTitle:active{
+  background: #8C8C8C;
+
+}
+.dropdown-item:hover{
+  background: #e0dede;
+}
+.dropdown-item:focus, .dropdown-item:active {
+  background: #0bdbcdba;
+  border:0;
+}
+.CCPU_PopupProjTitle{
+ color: #238d12;
+  
+
+}
+.CPEDU_PopupProjTitle{
+color: #e3631a;
+ 
+}
+.RMPU_PopupProjTitle{
+ color: #8d014f;
+}
+#popupBar{
+    position: absolute;     
+    text-align: center;     
+    width: 60px;          
+    height: 28px;         
+    padding: 2px;       
+    font: 12px sans-serif;    
+    background: lightsteelblue; 
+    border: 0px;    
+    border-radius: 8px;     
+    pointer-events: none; 
+
+}
+.popoverClass{
+  border-bottom: 1px solid #bababa; 
+}
+.projTitle{
+  font-size: 0.85rem;
+  margin: 0;
+  text-align: left;
+  cursor: pointer;
+}
+.popover{
+  max-height: 450px;
+  overflow-y: auto;
+  max-width:300px;
+  overflow-x: hidden;
+}
+.table td, .table th{
+  text-align: center;
+}
+@media print {
+  .navbar{
+  display: block;
+  background: #0093B8 !important;
+  color:white;
+  }
+
+  #projectsHub{
+      font-size: 27px;
+      color:#E2BE1F !important;
+      font-weight: 700;
+ 
+   
+  }
+
+}
