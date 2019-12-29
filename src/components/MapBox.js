@@ -514,9 +514,9 @@ class MapBox extends React.Component {
                 <div id="mapContainer" ref="mapContainer" className="mdc-elevation--z1" style={this.props.mapStyle}/>
                                 
                 <div className="container d-flex mt-2 justify-content-md-center text-muted " style={legendStyle}> 
-                  <span className="marker" style={markerStyle} className="CCPU"></span>Climate Change & Planning Unit
-                  <span className="marker" style={markerStyle} className="CPEDU"></span>City Planning and Design Unit 
-                 <span className="marker"style={markerStyle} className="RMPU"></span> Regional and Metropolitan Planning Unit
+                  <span className="marker CCPU" style={markerStyle} ></span>Climate Change & Planning Unit
+                  <span className="marker CPEDU" style={markerStyle} ></span>City Planning and Design Unit 
+                 <span className="marker RMPU" style={markerStyle}></span> Regional and Metropolitan Planning Unit
                 </div>
                  
                 </div>

@@ -4,16 +4,17 @@
   "private": true,
   "dependencies": {
     "@material/elevation": "^1.1.0",
-    "d3": "^5.14.2",
+    "d3": "^5.15.0",
+    "easy-peasy": "^3.2.6",
     "html2canvas": "^1.0.0-rc.5",
-    "node": "^12.13.0",
+    "node": "^12.14.0",
     "node-sass": "^4.13.0",
     "numeral": "^2.0.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.0.1",
-    "sass": "^1.23.7"
+    "react-scripts": "^3.3.0",
+    "sass": "^1.24.0"
   },
   "scripts": {
     "start": "react-scripts start",

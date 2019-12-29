@@ -206,7 +206,7 @@ class FilterAppHome extends React.Component{
 	    								 ongoingClosedValue={this.props.ongoingClosedValue} />
 							
 
-							<FetchFilterCharts unitName={this.props.unitName} countryName={this.props.countryName} 
+							<FetchFilterCharts countryName={this.props.countryName} 
 										unitName={this.props.unitName}   projectTitle={this.props.projectTitle} ongoingClosedValue={this.props.ongoingClosedValue} 
 										donorName={this.props.donorName} 	 
 										 handleDisplayProjectPage={this.displayFilterProjectPage}/>

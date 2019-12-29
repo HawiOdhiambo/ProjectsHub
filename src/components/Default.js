@@ -1,6 +1,6 @@
 import React from 'react';
 
-import  "./App.scss";
+import  "../App.scss";
 
 import {BrowserRouter as Router, Route, Redirect, Switch, Link} from "react-router-dom"
 //import { HashLink as Link } from 'react-router-hash-link';
@@ -27,8 +27,8 @@ import HomePageProjectPage from "./HomePageProjectPage.js";//get the ProjectsPer
 import ProjectValueAgainstStartYearTable from "./ProjectValueAgainstStartYearTable.js";//get the ProjectsPerGroupChart
 import FetchFilterCharts from "./FetchFilterCharts.js";//fetch the charts
 
-//contrrols the app functionality
-class App extends React.Component{
+//contrrols the Default functionality
+class Default extends React.Component{
   constructor(props){
     super(props);
     this.state={
@@ -82,11 +82,11 @@ class App extends React.Component{
     this.handleFilterSearch=this.handleFilterSearch.bind(this);
 
 
-    this.resetFilterApp=this.resetFilterApp.bind(this);
-    this.resetHomeApp=this.resetHomeApp.bind(this)
+    this.resetFilterDefault=this.resetFilterDefault.bind(this);
+    this.resetHomeDefault=this.resetHomeDefault.bind(this)
 
     this.initalizeFilterProjectPage=this.initalizeFilterProjectPage.bind(this)
-    this.intializeFilterAppHome=this.intializeFilterAppHome.bind(this)
+    this.intializeFilterDefaultHome=this.intializeFilterDefaultHome.bind(this)
     this.initializeFilterCountryPage=this.initializeFilterCountryPage.bind(this)
     this.initalizeFilterCountryProjectPage=this.initalizeFilterCountryProjectPage.bind(this)
    
@@ -157,10 +157,10 @@ class App extends React.Component{
   }
 
 
-  //assist in initializing the filter appHome
+  //assist in initializing the filter DefaultHome
 
 
-  intializeFilterAppHome(){
+  intializeFilterDefaultHome(){
     this.setState({countryPage:false, homepage: false, countryProjectPage:false, homepageProjectPage: false, displayFilterCountryPage:false,displayFilterResults:false,
      displayFilterProjectPage:false,  displayFilterCountryProjectPage:false, 
      markerLocation:'', p_idLocation: '', projectTitleLocation:'' })
@@ -276,8 +276,8 @@ console.log("filterPageProjectPage")
   }
 
 
-  //returns the filter App component to its default state
-  resetFilterApp(){
+  //returns the filter Default component to its default state
+  resetFilterDefault(){
   
     this.setState({homepage:false, countryPage: false, countryProjectPage:false, homepageProjectPage: false, displayFilterCountryPage:false,  displayFilterResults:false, 
     displayFilterProjectPage:false,  displayFilterCountryProjectPage:false,
@@ -296,7 +296,7 @@ console.log("filterPageProjectPage")
     })
   }
 
-  resetHomeApp(){
+  resetHomeDefault(){
 
      this.setState({ pageLocation: ''});//reset the page location
 
@@ -562,7 +562,7 @@ if(countryPage===false && homepage=== false && countryProjectPage===true && home
 
         <div>
           
-           <Navbar resetFilterApp={this.resetFilterApp} resetHomeApp={this.resetHomeApp}/>
+           <Navbar resetFilterDefault={this.resetFilterDefault} resetHomeDefault={this.resetHomeDefault}/>
   
            {homepageElements} 
 
@@ -586,12 +586,12 @@ if(countryPage===false && homepage=== false && countryProjectPage===true && home
 
           <Route  exact path='/filter' 
 
-          render={({location, match})=> <FilterAppHome resetFilterApp={this.resetFilterApp}
+          render={({location, match})=> <FilterAppHome resetFilterDefault={this.resetFilterDefault}
                                          handleSearch={this.handleFilterSearch} displayResult={displayFilterResults} displayErrorMessage={displayErrorMessage}
                                         countryName={countryNameParam} unitName={unitNameParam} donorName={donorNameParam} ongoingClosedValue={ongoingClosedValueParam} 
                                         handleDisplayFilterCountryPage={this.handleDisplayFilterCountryPage}  projectTitle={projectNameParam}
                                         location={location} match={match} handleDisplayFilterProjectPage={this.handleDisplayFilterProjectPage} 
-                                        intializeFilterAppHome={this.intializeFilterAppHome} pageLocation={pageLocation} changePageLocation={this.changePageLocation}/>} />
+                                        intializeFilterDefaultHome={this.intializeFilterDefaultHome} pageLocation={pageLocation} changePageLocation={this.changePageLocation}/>} />
 
            <Route exact path='/filter/country/:countryName' 
                  render={({match, location})=><FilterCountryPage match={match}  location={location}
@@ -1063,16 +1063,4 @@ constructor(props){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-export default App;
+export default Default;

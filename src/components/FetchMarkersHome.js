@@ -28,7 +28,8 @@ class FetchMarkersHome extends React.Component {
       url: "http://localhost/projects_hub/proj_hub/public/get_markers_home.php",
 
       success: function(response){
-        
+
+        console.log(response)
          getData(response)
 
 
