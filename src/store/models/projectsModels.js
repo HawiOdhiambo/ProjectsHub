@@ -4,17 +4,17 @@ import { projectsApi } from "../../data";
 
 
 const projectModels = {
-    items : [],
+    markers: [],
 
-    addAll: action((state,payload) => {
-        state.items = [...payload];
+    addAllMarkers: action((state, payload) => {
+        state.markers = [...payload];
     }),
 
-    fetchData : thunk( async( actions ) => {
-        const projects = await projectsApi.getProjectsByCountry();
-        actions.addAll(projects)
+    fetchMarkers: thunk(async (actions) => {
+        const markers = await projectsApi.getProjectsByCountry();
+        actions.addAll(markers)
     })
 
 };
 
-export default projectModelst
+export default projectModels;
