@@ -142,7 +142,8 @@ class FilterAppHome extends React.Component{
 	
 
 	render(){
-		 const mapStyle={
+	
+	const mapStyle={
 
    			 height : '45em',
     		position: 'relative',
@@ -150,9 +151,6 @@ class FilterAppHome extends React.Component{
    		 };
 
 
-
-    console.log("FilterAppHome")
-     console.log(this.props)
     
     
       		return(<div className="container-fluid mt-5">

@@ -1,7 +1,7 @@
 import React from 'react';
-import CPEDU_default_image from './images/CPEDU_default_image.jpg';
-import RMPU_default_image from './images/RMPU_default_image.jpg';
-import CCPU_default_image from './images/CCPU_default_image.jpg';
+import CPEDU_default_image from '../images/CPEDU_default_image.jpg';
+import RMPU_default_image from '../images/RMPU_default_image.jpg';
+import CCPU_default_image from '../images/CCPU_default_image.jpg';
 import * as numeral from 'numeral';
 
 class FetchProjectDetails extends React.Component{
