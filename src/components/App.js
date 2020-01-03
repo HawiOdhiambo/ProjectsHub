@@ -1,6 +1,6 @@
 import React from 'react';
 
-import  "../App.scss";
+import  "../styles/App.scss";
 
 import {BrowserRouter as Router, Route, Redirect} from "react-router-dom"
 //import { HashLink as Link } from 'react-router-hash-link';
