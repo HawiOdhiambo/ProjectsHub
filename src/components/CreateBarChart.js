@@ -160,6 +160,7 @@ class CreateBarChart extends React.Component{
 				         //.attr("data-placement", "top")
 					     .attr("data-html", true)
 					     .attr("whiteList", ()=>{
+
 								let myDefaultWhiteList = window.$.fn.tooltip.Constructor.Default.whiteList;
 								myDefaultWhiteList.p=['data-id', 'data-project-title'];
 							})

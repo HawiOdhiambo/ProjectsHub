@@ -4,6 +4,7 @@ import UnitInput from "./UnitInput.js"
 import OngoingClosedInput from "./OngoingClosedInput.js"
 import DonorInput from "./DonorInput.js"
 import ProjectNameInput from "./ProjectNameInput.js"
+//import FilterInput from "./FilterInput.js";
 //controls the filter
 class SearchFilter extends React.Component{
 	constructor(props){
@@ -339,6 +340,9 @@ class SearchFilter extends React.Component{
 										 projectNameFlag={projectNameFlag} 
 										 handleClearProjectNameInput={this.handleClearProjectNameInput}/>
 
+
+					
+						
 						<div className="d-flex justify-content-around">
 								<button type="button" className="btn btn-dark btn-lg" onClick={this.handleClearAll}>Clear All</button>
 								<button type="button" className="btn btn-dark btn-lg" onClick={this.handleSearch}>Search</button>

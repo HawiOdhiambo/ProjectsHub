@@ -118,7 +118,7 @@ function checkLinkHome(match, location){
   if(match){
     return true
   }
-  if(locationPath.search("/home")!=-1){
+  if(locationPath.search("/home")!==-1){
     return true
   }
 }
@@ -130,7 +130,7 @@ function checkLinkFilter(match, location){
     if(match){
       return true
     }
-    if(locationPath.search("/filter")!=-1){
+    if(locationPath.search("/filter")!==-1){
       return true
     }
 

@@ -11,6 +11,7 @@ import FetchFilterSummary from "./FetchFilterSummary";
 
  function FilterAppHome(props){
 
+ 		const changeProjectPage = useStoreActions(actions => actions.filterProjectPageModel.changeFilterProjectPageValue);
   //returns the filter App component to its default state
 	function resetFilterApp(){
 
@@ -41,8 +42,10 @@ import FetchFilterSummary from "./FetchFilterSummary";
   
   function displayFilterProjectPage(p_id, project_title, unit, e){
   
-	  props.handleDisplayFilterProjectPage(p_id, project_title, unit, e)
+	  //props.handleDisplayFilterProjectPage(p_id, project_title, unit, e)
  		//changeProjectPage()
+ 
+	changeProjectPage();
 		  
   }
 

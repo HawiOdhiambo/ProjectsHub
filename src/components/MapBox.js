@@ -1,12 +1,10 @@
 import React from 'react';
-import {country_bounding_boxes} from './country_bounding_boxes'
+import {country_bounding_boxes} from '../data/country_bounding_boxes'
 
 const countriesKeys=Object.keys(country_bounding_boxes)
 
 
 class MapBox extends React.Component {
-
-
 
 
  componentDidMount(){ 
@@ -16,7 +14,6 @@ class MapBox extends React.Component {
        this.map = new window.mapboxgl.Map({
         container: this.refs.mapContainer, // container id
         style: 'mapbox://styles/hawiodhiambo/cjv3jl89v1c1a1flaqc9u8uoz', // stylesheet location
-        //center: [18.204777, 35.466676], // starting position [lng, lat]
         zoom: 1.25 // starting zoom
       });
  
@@ -53,7 +50,7 @@ class MapBox extends React.Component {
     if(this.props.markerData===prevProps.markerData && this.props.countryName!==prevProps.countryName){
     //if the country Name is present
         if(this.props.countryName !== ''){
-            //console.log('marker data same but country name different')
+        
              countriesKeys.find(countryName=> {
            
            if(countryName===this.props.countryName){
@@ -158,7 +155,7 @@ class MapBox extends React.Component {
        let polygon=window.turf.polygon([markersBoundingBoxCoordinates])
        let polygonScaled=window.turf.transformScale(polygon, 1.5);
       let mapBounds=window.turf.bbox(polygonScaled);
-      //console.log(mapBounds)
+     
       this.map.fitBounds(mapBounds); 
 
     }
@@ -170,13 +167,12 @@ class MapBox extends React.Component {
     
       let lineString=window.turf.lineString(markersBoundingBoxCoordinates);
 
-      console.log(lineString)
+ 
 
       let lineStringScaled=window.turf.transformScale(lineString, 3);
-      console.log(lineStringScaled)
+      
 
       let bbox=window.turf.bbox(lineStringScaled)
-      console.log(bbox);
       
       
      
@@ -199,8 +195,7 @@ class MapBox extends React.Component {
     //if there are no markers returned, but there is a country name passed to the component, use the country name to calculate the bounding box. 
     if(geojsonArray.features.length===0 && this.props.countryName !== ''){
 
-      //console.log('Country name present but marker data not')
-      //console.log(this.props.countryName)
+  
        countriesKeys.find(countryName=> {
            
            if(countryName===this.props.countryName){
@@ -212,7 +207,6 @@ class MapBox extends React.Component {
 
    if(geojsonArray.features.length===0 && this.props.countryName === ''){
 
-        //console.log('NO features')
          let defaultMapBounds=[-172, -38, 178, 53];
 
           this.map.fitBounds(defaultMapBounds) 
@@ -326,8 +320,7 @@ class MapBox extends React.Component {
 
           if(projectsNumber){
               let markerSize=(projectsNumber*rateIncrease)+startValue;
-              ////console.log(markerSize);
-              ////console.log(projectsNumber)
+     
               el.style.width =markerSize + 'px';
               el.style.height = markerSize + 'px';
               this.createMarker(el, marker);        
@@ -426,8 +419,6 @@ class MapBox extends React.Component {
               //create a link only if the page is not a country page
               if(this.props.callingPage!=="countryPage"){
 
-                //let hrefUrl="/filter/country/"+marker.properties.loc_name+this.props.location.search;
-                //let redirectPage='<a href="'+hrefUrl+'" >More information</a>';
                 let redirectPage='<a href="" id="more" markerLocation="'+marker.properties.loc_name+'">More information</a>';
                 htmlPopup+=redirectPage;
                 
