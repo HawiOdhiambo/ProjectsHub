@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useStoreActions } from 'easy-peasy';
 import FetchMarkersFilter from "./FetchMarkersFilter.js";
 
 import ProjectsCard from "./ProjectsCard.js";//import the project titles and buttons
@@ -8,66 +9,53 @@ import FetchFilterSummary from "./FetchFilterSummary";
 
 
 
-class FilterAppHome extends React.Component{
- constructor(props){
-   super(props);
-   
- 
-   props.intializeFilterAppHome();//make sure the App component's state have right data set
-
- 
-   this.resetFilterApp=this.resetFilterApp.bind(this);
-   this.displayFilterCountryPage=this.displayFilterCountryPage.bind(this)
-   this.displayFilterProjectPage=this.displayFilterProjectPage.bind(this)
-  	
-
-  }
+ function FilterAppHome(props){
 
   //returns the filter App component to its default state
-  resetFilterApp(){
+	function resetFilterApp(){
 
-  	this.props.resetFilterApp() //lift state up to handle a reset
-  }
+			props.resetFilterApp() //lift state up to handle a reset
+		}
 
-  componentDidUpdate(prevProps){
+  useEffect(() => {
 
-  	//this works with the navlink filter to ensure the app goes back to its original state
-  	if(this.props.location.state!== undefined){
+	if(props.location.state!== undefined){
   		
-  		if(this.props.location.state!== prevProps.location.state){
-  	
-  			//window.location.reload();
-  			this.resetFilterApp()
-  		}
-  	}
-  }
+	
+		resetFilterApp()
+		
+	}
+  }, [props.location.state])
+
   //take to the next filter location.
-  displayFilterCountryPage(e){
+  function displayFilterCountryPage(e){
   
 
 
   	let countryName=window.$(e.target).attr("markerlocation"); //get the countryName with Jquery
   
 
-  	this.props.handleDisplayFilterCountryPage(countryName) //pass it to the handleDisplayFilterCountryPage while lifting state
+  	props.handleDisplayFilterCountryPage(countryName) //pass it to the handleDisplayFilterCountryPage while lifting state
   }
 
   
-  displayFilterProjectPage(p_id, project_title, unit, e){
+  function displayFilterProjectPage(p_id, project_title, unit, e){
   
-  	this.props.handleDisplayFilterProjectPage(p_id, project_title, unit, e)
+	  props.handleDisplayFilterProjectPage(p_id, project_title, unit, e)
+ 		//changeProjectPage()
+		  
   }
 
 
 
 
-	componentDidMount(){
+	useEffect(() => {
 		
-
+		props.intializeFilterAppHome();//make sure the App component's state have right data set
 			//check if there are a parameter in the url on refresh page. Handles the autosearch on mounting if there is a parameter
-			if(this.props.location.search!==''){
+			if(props.location.search!==''){
 			    
-			     let params = new URLSearchParams(this.props.location.search);
+			     let params = new URLSearchParams(props.location.search);
 
 				 let countryNameParameter, unitNameParameter, ongoingClosedParameter, donorNameParameter, projectNameParameter ;
 
@@ -115,7 +103,7 @@ class FilterAppHome extends React.Component{
 
 				 
 				
-				 	this.props.handleSearch(countryNameParameter, unitNameParameter, ongoingClosedParameter, donorNameParameter, projectNameParameter) //lift state up to assign the country parameter to the state's country Name in Filter App
+				 	props.handleSearch(countryNameParameter, unitNameParameter, ongoingClosedParameter, donorNameParameter, projectNameParameter) //lift state up to assign the country parameter to the state's country Name in Filter App
 				 	
 				 }
 
@@ -123,9 +111,9 @@ class FilterAppHome extends React.Component{
 				 
 			}
 
-			if(this.props.pageLocation!=="" && this.props.pageLocation!== undefined){
+			if(props.pageLocation!=="" && props.pageLocation!== undefined){
            
-	          let pageLocation=this.props.pageLocation;
+	          let pageLocation=props.pageLocation;
 	          console.log(pageLocation)
 	           
 	          setTimeout(function(){
@@ -136,19 +124,17 @@ class FilterAppHome extends React.Component{
 	            }, 300);
           }
 			
-	}
+	}, [])
 
 
 	
 
-	render(){
 	
 	const mapStyle={
 
    			 height : '45em',
     		position: 'relative',
-  
-   		 };
+     		 };
 
 
     
@@ -157,25 +143,25 @@ class FilterAppHome extends React.Component{
 					<div className="row ">
 						<div className="col-sm-4">
 
-							<SearchFilter displayResult={this.props.displayResult} resetFilterApp={this.resetFilterApp} handleSearch={this.props.handleSearch} 
-							countryNameParameter={this.props.countryName} unitNameParameter={this.props.unitName} donorNameParameter={this.props.donorName}
-							 ongoingClosedParameter={this.props.ongoingClosedValue} projectNameParameter={this.props.projectTitle}/>
+							<SearchFilter displayResult={props.displayResult} resetFilterApp={resetFilterApp} handleSearch={props.handleSearch} 
+							countryNameParameter={props.countryName} unitNameParameter={props.unitName} donorNameParameter={props.donorName}
+							 ongoingClosedParameter={props.ongoingClosedValue} projectNameParameter={props.projectTitle}/>
 
 						</div>
 
 						{
 							//when the display result is set to true, show the map
-							(this.props.displayResult===true)?(
+							(props.displayResult===true)?(
 
 								<div className="col-sm-8" >
 
-									<FetchMarkersFilter changeFilterPage={this.displayFilterCountryPage} countryName={this.props.countryName} 
-									unitName={this.props.unitName}   projectTitle={this.props.projectTitle} ongoingClosedValue={this.props.ongoingClosedValue} 
-									donorName={this.props.donorName} mapStyle={mapStyle} location={this.props.location}/>
+									<FetchMarkersFilter changeFilterPage={displayFilterCountryPage} countryName={props.countryName} 
+									unitName={props.unitName}   projectTitle={props.projectTitle} ongoingClosedValue={props.ongoingClosedValue} 
+									donorName={props.donorName} mapStyle={mapStyle} location={props.location}/>
 								</div>
 
 							)://when there is an error
-							(this.props.displayErrorMessage===true)?(
+							(props.displayErrorMessage===true)?(
 
 								<div className="col-sm-8" >
 									<p>Please enter some values to search.</p>
@@ -188,25 +174,25 @@ class FilterAppHome extends React.Component{
 					
 					{ 
 						//when the displayResult is set to true, show the project titles
-						(this.props.displayResult===true)? (
+						(props.displayResult===true)? (
 
 		    		
 							<div className="container ">
 	
 
-	                      	<ProjectsCard  location={this.props.location} unitName={this.props.unitName} changeWebPage={this.displayFilterProjectPage} 
-	                      				 countryName={this.props.countryName} projectTitle={this.props.projectTitle} donorName={this.props.donorName}
-	    								 ongoingClosedValue={this.props.ongoingClosedValue} callingPage="filter/" changePageLocation={this.props.changePageLocation}/>
+	                      	<ProjectsCard  location={props.location} unitName={props.unitName} changeWebPage={displayFilterProjectPage} 
+	                      				 countryName={props.countryName} projectTitle={props.projectTitle} donorName={props.donorName}
+	    								 ongoingClosedValue={props.ongoingClosedValue} callingPage="filter/" changePageLocation={props.changePageLocation}/>
 	    					
-	    					<FetchFilterSummary  unitName={this.props.unitName} changeWebPage={this.displayFilterProjectPage} 
-	                      				 countryName={this.props.countryName} projectTitle={this.props.projectTitle} donorName={this.props.donorName}
-	    								 ongoingClosedValue={this.props.ongoingClosedValue} />
+	    					<FetchFilterSummary  unitName={props.unitName} changeWebPage={displayFilterProjectPage} 
+	                      				 countryName={props.countryName} projectTitle={props.projectTitle} donorName={props.donorName}
+	    								 ongoingClosedValue={props.ongoingClosedValue} />
 							
 
-							<FetchFilterCharts countryName={this.props.countryName} 
-										unitName={this.props.unitName}   projectTitle={this.props.projectTitle} ongoingClosedValue={this.props.ongoingClosedValue} 
-										donorName={this.props.donorName} 	 
-										 handleDisplayProjectPage={this.props.handleDisplayFilterProjectPage}/>
+							<FetchFilterCharts countryName={props.countryName} 
+										unitName={props.unitName}   projectTitle={props.projectTitle} ongoingClosedValue={props.ongoingClosedValue} 
+										donorName={props.donorName} 	 
+										 handleDisplayProjectPage={displayFilterProjectPage}/>
 			
 
 								
@@ -219,9 +205,15 @@ class FilterAppHome extends React.Component{
 		 </div>
 		)
 		
-	}
+
 }
 
+/*function changeProjectPage(){
+	console.log("change");
+	const changeProjectPage = useStoreActions(actions => actions.filterProjectPageModel.changeFilterProjectPageValue);
+	//changeProjectPage();
+
+}*/
 
 
 export default FilterAppHome;
