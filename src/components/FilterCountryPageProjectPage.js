@@ -194,11 +194,21 @@ if(props.markerLocation!==''){
 
 
  
-
+  let payLoad ={ markerLocation : this.markerLocation,
+                  pageLocation : this.pageLocation,
+                  countryName : this.countryName,
+                  unitName : this.unitName,
+                  ongoingClosedValue : this.ongoingClosedValue,
+                  donorName : this.donorName,
+                  projectName : this.projectName,
+                  projectTitleLocation : this.projectTitleLocation,
+                  p_idLocation:this.p_idLocation
+                   }
+   
  
 
 
-   props.initalizeFilterCountryProjectPage(this.markerLocation, this.pageLocation, this.countryName, this.unitName, this.ongoingClosedValue,  this.donorName, this.projectName, this.projectTitleLocation);
+   props.initalizeFilterCountryProjectPage(payLoad);
   this.changePageLocation=this.changePageLocation.bind(this)
 }
 

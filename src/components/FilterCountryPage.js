@@ -154,11 +154,15 @@ class FilterCountryPage extends React.Component{
           }
 
 
-
-     
+      let payLoad={markerLocation : this.markerLocation , 
+                  countryName : this.countryName,
+                  unitName : this.unitName ,
+                  ongoingClosedValue : this.ongoingClosedValue ,
+                  donorName : this.donorName ,
+                  projectName : this.projectName}
    
 
-      this.props.initializeFilterCountryPage(this.markerLocation, this.countryName, this.unitName, this.ongoingClosedValue, this.donorName, this.projectName); //initialize the app component with the right values
+      this.props.initializeFilterCountryPage(payLoad); //initialize the app component with the right values
 
 
 
@@ -170,8 +174,10 @@ class FilterCountryPage extends React.Component{
 
 
 	 displayFilterCountryProjectPage(projectTitle, p_id, pageLocation){
+
+      let payLoad = { projectTitle : projectTitle, p_id : p_id, pageLocation : pageLocation}
   
-  		this.props.handleDisplayFilterCountryProjectPage(projectTitle, p_id, pageLocation)
+  		this.props.handleDisplayFilterCountryProjectPage(payLoad)
   	}
 
 

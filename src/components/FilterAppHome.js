@@ -12,7 +12,7 @@ import FetchFilterSummary from "./FetchFilterSummary";
  function FilterAppHome(props){
 
 
-	const changeProjectPage = useStoreActions(actions => actions.handleDisplayFilterProjectPage);
+
 
 	  //returns the filter App component to its default state
 	function resetFilterApp(){
@@ -35,19 +35,20 @@ import FetchFilterSummary from "./FetchFilterSummary";
 	function displayFilterCountryPage(e){
 	  
 	  	let countryName=window.$(e.target).attr("markerlocation"); //get the countryName with Jquery
+
+	  	let payLoad={countryName : countryName}
 	  
 
-	  	props.handleDisplayFilterCountryPage(countryName) //pass it to the handleDisplayFilterCountryPage while lifting state
+	  	props.handleDisplayFilterCountryPage(payLoad) //pass it to the handleDisplayFilterCountryPage while lifting state
 	  }
 
 	  
 	function displayFilterProjectPage(project_title, p_id, pageLocation, e){
 
-				console.log(project_title+ p_id+ pageLocation,)
 	  	
 	  		let payLoad={p_id: p_id, project_title: project_title, pageLocation: pageLocation }
 
-	 		changeProjectPage(payLoad)
+	 		props.handleDisplayFilterProjectPage(payLoad)
 	 
 			  
 	 }

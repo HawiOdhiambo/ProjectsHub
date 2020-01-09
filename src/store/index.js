@@ -121,23 +121,42 @@ const storeModel ={
         //initialize the filter CountryPage
       initializeFilterCountryPage:action((state,{markerLocation, countryName, unitName, ongoingClosedValue, donorName, projectName}) => {
 
-        state.appStore={homepage:false, countryPage: false, countryProjectPage:false,  homepageProjectPage: false, displayFilterCountryPage:true, displayFilterResults:false, 
-          displayFilterProjectPage:false,  displayFilterCountryProjectPage:false,
-             markerLocation: markerLocation, p_idLocation: '', projectTitleLocation:'',
+        state.appStore.homepage = false;
+        state.appStore.countryPage =  false; 
+        state.appStore.countryProjectPage = false;
+        state.appStore.homepageProjectPage =  false;
 
-          searchFilterParams:{ countryNameParam: countryName, unitNameParam: unitName, ongoingClosedValueParam:ongoingClosedValue, 
-                       donorNameParam: donorName, projectNameParam:projectName}};
+        state.appStore.displayFilterCountryPage = true; 
+        state.appStore.displayFilterResults = false; 
+        state.appStore.displayFilterProjectPage = false;
+        state.appStore.displayFilterCountryProjectPage = false;
+
+        state.appStore.markerLocation =  markerLocation;
+        state.appStore.p_idLocation =  '';
+        state.appStore.projectTitleLocation = '';
+
+        state.appStore.searchFilterParams = { countryNameParam: countryName, unitNameParam: unitName, ongoingClosedValueParam:ongoingClosedValue, 
+                       donorNameParam: donorName, projectNameParam:projectName};
       }),
           //initialize the filter CountryProjectPage
-      initalizeFilterCountryProjectPage:action((state, {markerLocation, pageLocation, countryName, unitName, ongoingClosedValue, donorName, projectName, projectTitleLocation}) => {
+      initalizeFilterCountryProjectPage:action((state, {markerLocation, pageLocation, countryName, unitName, ongoingClosedValue, donorName, projectName, projectTitleLocation, p_idLocation}) => {
         
-         state.appStore={homepage:false, countryPage: false, countryProjectPage:false, homepageProjectPage: false, displayFilterCountryPage:false, displayFilterResults:false, 
-          displayFilterProjectPage: false, displayFilterCountryProjectPage:true,
-           projectTitleLocation:projectTitleLocation, markerLocation: markerLocation, p_idLocation: '', pageLocation: pageLocation,
+         state.appStore.homepage = false; 
+         state.appStore.countryPage =  false;
+         state.appStore.countryProjectPage = false;
+         state.appStore.homepageProjectPage =  false;
+         state.appStore.displayFilterCountryPage = false;
+         state.appStore.displayFilterResults = false; 
+         state.appStore.displayFilterProjectPage =  false; 
+         state.appStore.displayFilterCountryProjectPage = true;
+         state.appStore.projectTitleLocation = projectTitleLocation;
+         state.appStore.markerLocation =  markerLocation;
+         state.appStore.p_idLocation =  p_idLocation; 
+         state.appStore.pageLocation =  pageLocation;
 
-          searchFilterParams:{countryNameParam: countryName, unitNameParam: unitName, ongoingClosedValueParam:ongoingClosedValue, 
-                       donorNameParam: donorName, projectNameParam:projectName}
-          };
+          state.appStore.searchFilterParams = {countryNameParam: countryName, unitNameParam: unitName, ongoingClosedValueParam:ongoingClosedValue, 
+                       donorNameParam: donorName, projectNameParam:projectName};
+         
       }
     ),
 
@@ -160,40 +179,72 @@ const storeModel ={
 
         if(countryName!==''|| unitName!=='' || ongoingClosedValue !=='' || donorName!=='' || projectName!==''){
 
-            state.appStore={homepage:false, countryPage: false, countryProjectPage:false, homepageProjectPage: false, displayFilterCountryPage:false,  displayFilterResults: true,
-                       displayFilterProjectPage:false,  displayFilterCountryProjectPage:false, displayErrorMessage:false,
+            state.appStore.homepage = false; 
+            state.appStore.countryPage =  false; 
+            state.appStore.countryProjectPage = false;
+            state.appStore.homepageProjectPage =  false;
 
-                       searchFilterParams:{ countryNameParam: countryName, unitNameParam: unitName, ongoingClosedValueParam:ongoingClosedValue, 
-                       donorNameParam: donorName, projectNameParam:projectName},
+            state.appStore.displayFilterCountryPage = false;
+            state.appStore.displayFilterResults =  true;
+            state.appStore.displayFilterProjectPage = false;
+            state.appStore.displayFilterCountryProjectPage = false;
+            state.appStore.displayErrorMessage = false;
 
-                       markerLocation:'', projectTitleLocation:'', p_idLocation: '',  pageLocation: ''
 
-                      };//enables the results of the search to show on the screen
+            state.appStore.searchFilterParams = {countryNameParam: countryName, unitNameParam: unitName, ongoingClosedValueParam:ongoingClosedValue, 
+             donorNameParam: donorName, projectNameParam:projectName};
+
+             state.appStore.markerLocation = '';
+             state.appStore.projectTitleLocation = '';
+             state.appStore.p_idLocation =  '';
+             state.appStore.pageLocation =  '';
+            
         }
         else{
 
-             state.appStore={homepage:false, countryPage: false, countryProjectPage:false, homepageProjectPage: false, displayFilterCountryPage:false,  displayFilterResults: false,
-                       displayFilterProjectPage:false,  displayFilterCountryProjectPage:false, displayErrorMessage:true,
+            state.appStore.homepage = false; 
+            state.appStore.countryPage =  false; 
+            state.appStore.countryProjectPage = false;
+            state.appStore.homepageProjectPage =  false;
 
-                       searchFilterParams:{ countryNameParam: countryName, unitNameParam: unitName, ongoingClosedValueParam:ongoingClosedValue, 
-                       donorNameParam: donorName, projectNameParam:projectName},
+            state.appStore.displayFilterCountryPage = false;
+            state.appStore.displayFilterResults =  false;
+            state.appStore.displayFilterProjectPage = false;
+            state.appStore.displayFilterCountryProjectPage = false;
+            state.appStore.displayErrorMessage = true;
 
-                       markerLocation:'', projectTitleLocation:'', p_idLocation: '',  pageLocation: ''
 
-                      };//enables error message to show on the screen
+            state.appStore.searchFilterParams = {countryNameParam: countryName, unitNameParam: unitName, ongoingClosedValueParam:ongoingClosedValue, 
+             donorNameParam: donorName, projectNameParam:projectName};
+
+             state.appStore.markerLocation = '';
+             state.appStore.projectTitleLocation = '';
+             state.appStore.p_idLocation =  '';
+             state.appStore.pageLocation =  '';
         }
       
      
       }),
 
       //assist in the displaying of the filter country page
-      handleDisplayFilterCountryPage: action((state, countryName)=>{
+      handleDisplayFilterCountryPage: action((state, {countryName})=>{
         
 
-         state.appStore={homepage:false, countryPage: false, countryProjectPage:false, homepageProjectPage: false, 
-          displayFilterCountryPage:true, displayFilterResults:false, 
-          displayFilterProjectPage:false,  displayFilterCountryProjectPage:false,
-           markerLocation: countryName, projectTitleLocation:'', p_idLocation: '', pageLocation: ''};
+        state.appStore.homepage = false;
+        state.appStore.countryPage =  false;
+        state.appStore.countryProjectPage = false;
+        state.appStore.homepageProjectPage =  false; 
+
+        state.appStore.displayFilterCountryPage = true;
+        state.appStore.displayFilterResults = false; 
+
+        state.appStore.displayFilterProjectPage = false;
+        state.appStore.displayFilterCountryProjectPage = false;
+
+        state.appStore.markerLocation =  countryName;
+        state.appStore.projectTitleLocation = '';
+        state.appStore.p_idLocation =  '';
+        state.appStore.pageLocation =  '';
       }), 
 
       //assist in displaying filterPageProjectPage
@@ -219,12 +270,22 @@ const storeModel ={
       }
     ),
 
-      handleDisplayFilterCountryProjectPage: action((state, {projectTitle, p_id, pageLocation})=>{
+      handleDisplayFilterCountryProjectPage: action((state, {projectTitle, p_id, pageLocation}) => {
 
-        state.appStore={homepage:false, countryPage: false, countryProjectPage:false, homepageProjectPage: false, 
-          displayFilterCountryPage:false, displayFilterResults:false, 
-          displayFilterProjectPage:false,  displayFilterCountryProjectPage:true,
-            projectTitleLocation:projectTitle, p_idLocation:p_id, pageLocation: pageLocation};
+        state.appStore.homepage = false;
+        state.appStore.countryPage= false; 
+        state.appStore.countryProjectPage=false;
+        state.appStore.homepageProjectPage= false;
+
+        state.appStore.displayFilterCountryPage=false;
+        state.appStore.displayFilterResults=false; 
+
+        state.appStore.displayFilterProjectPage=false; 
+        state.appStore.displayFilterCountryProjectPage=true;
+
+        state.appStore.projectTitleLocation=projectTitle;
+        state.appStore.p_idLocation=p_id;
+        state.appStore.pageLocation= pageLocation;
            
       }),
 
