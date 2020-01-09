@@ -180,9 +180,16 @@ constructor(props){
   }
    
 
-
+    const payload={projectTitleLocation : this.projectTitleLocation , 
+                   p_idLocation : this.p_idLocation,
+                   pageLocation : this.pageLocation,
+                   countryName : this.countryName,
+                   unitName : this.unitName,
+                   ongoingClosedValue : this.ongoingClosedValue,
+                   donorName : this.donorName,
+                   projectName : this.projectName}
    
-    props.initalizeFilterProjectPage(this.projectTitleLocation, this.p_idLocation, this.pageLocation, this.countryName, this.unitName, this.ongoingClosedValue, this.donorName, this.projectName);
+    props.initalizeFilterProjectPage(payload);
 
 
  
