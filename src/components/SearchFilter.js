@@ -137,8 +137,17 @@ class SearchFilter extends React.Component{
       	let donorValue=document.getElementById("donorSearch").value;
       	let projectName=document.getElementById("projectNameSearch").value;
       	let p_id=document.getElementById("projectNameSearch").getAttribute('data-project_id');
-      	this.props.handleSearch(countryName,unitName, ongoingClosedValue, donorValue, projectName, p_id, e); //passes the values to the function by the same title by reference
+      	//this.props.handleSearch(countryName,unitName, ongoingClosedValue, donorValue, projectName, p_id, e); //passes the values to the function by the same title by reference
 
+      	const payLoad={countryName: countryName,
+	 				 	unitName: unitName, 
+	 				 	ongoingClosedValue: ongoingClosedValue,
+	 				 	donorName: donorValue, 
+	 				 	projectName: projectName}
+
+		console.log(payLoad)
+					
+		this.props.handleSearch(payLoad) 
 
      }
      //clear all fields in the form and hide the results
