@@ -215,24 +215,13 @@ class MajorDonorsChart extends React.Component{
 	  			//if the popover is targeted and it contains the proj title, hide the popover and display the homepageProjPage
 	  		if((node.contains(e.target)) &&(window.$(e.target).hasClass("projTitle"))){
 				
-	  				document.querySelectorAll(".popover").forEach(function(node){
-									window.$(node).popover('hide');
-								})
+	  				window.$(node).popover('hide');
+	  				  setTimeout(function(){
 
-
-	  				 setTimeout(function(){
-
-	  				 		
-						  	document.querySelectorAll(".popover").forEach(function(node){
-									window.$(node).popover('hide');
-								})
-			 	
-
-              
+              			document.removeEventListener("click", click)
                			displayHomePageProjectPage(e.target)
 
 		                  }, 200);
-
 	
 			 	}
 		

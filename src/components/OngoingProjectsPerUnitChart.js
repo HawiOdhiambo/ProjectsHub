@@ -173,7 +173,7 @@ class OngoingProjectsPerUnitChart extends React.Component{
 	  				window.$(node).popover('hide');
 	  				 setTimeout(function(){
 
-              
+              			document.removeEventListener("click", click)
                			displayHomePageProjectPage(e.target)
 
 		                  }, 200);
