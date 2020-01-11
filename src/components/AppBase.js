@@ -20,6 +20,10 @@ import CountryPage from './CountryPage.js';
     let  homepageElements;
 
 
+     
+          
+
+
    
     const homepage = useStoreState(state => state.appStore.homepage);
     const countryPage = useStoreState(state => state.appStore.countryPage);
@@ -49,6 +53,11 @@ import CountryPage from './CountryPage.js';
 
 
     /*Actions*/
+
+    const activateCountrypage= useStoreActions(actions => actions.activateCountrypage);
+    const whenHomePage = useStoreActions(actions => actions.whenHomePage);
+    const handleDisplayHomePageProjectPage = useStoreActions(actions => actions.handleDisplayHomePageProjectPage);
+
     const resetFilterApp = useStoreActions(actions => actions.resetFilterApp);
     const resetHomeApp = useStoreActions(actions => actions.resetHomeApp);
 
@@ -316,6 +325,9 @@ if(countryPage===false && homepage=== false && countryProjectPage===true && home
           {homepageElements} 
 
           
+        <Route exact path='/' render={()=> <HomePage changeHomepage={activateCountrypage}  countryName={countryNameParam}
+          unitName={unitNameParam} ongoingClosedValue={ongoingClosedValueParam}  donorName={donorNameParam} projectName={projectNameParam}
+          whenHomePage={whenHomePage} handleDisplayProjectPage={handleDisplayHomePageProjectPage} pageLocation={pageLocation}/>} /> 
 
           
        <Route exact path='/filter' 
@@ -359,7 +371,7 @@ if(countryPage===false && homepage=== false && countryProjectPage===true && home
 /*
  <Navbar resetFilterApp={this.resetFilterApp} resetHomeApp={this.resetHomeApp}/>
 <Route exact path='/' render={()=> <HomePage changeHomepage={this.activateCountrypage}
-                  whenHomePage={this.whenHomePage} handleDisplayProjectPage={this.handleDisplayHomePageProjectPage} pageLocation={pageLocation}/>} /> 
+      whenHomePage={this.whenHomePage} handleDisplayProjectPage={this.handleDisplayHomePageProjectPage} pageLocation={pageLocation}/>} /> 
 
             <Route exact path='/home/country/:countryName' render={({match, location})=><CountryPage match={match} location={location}  
             handleDisplayProjectPage={this.handleDisplayCountryPageProjectPage}
