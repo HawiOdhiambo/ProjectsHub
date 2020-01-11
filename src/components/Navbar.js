@@ -42,8 +42,11 @@ let imageSize ={
   let removeTextDecoration={
     textDecoration:'none'
   }
-  const navWidth={
-    width: '100%'
+  const navStyle={
+    width : '100%',
+    top : '0',
+    position : 'fixed',
+    zIndex : '3'
   }
 
       return(
@@ -52,7 +55,7 @@ let imageSize ={
                 
               
               
-                <nav className="navbar navbar-expand-md  mdc-elevation--z5" role="navigation" style={navWidth} >
+                <nav className="navbar navbar-expand-md  mdc-elevation--z5" role="navigation" style={navStyle} >
                    
 
                    <div className="container d-flex align-items-end ">   
