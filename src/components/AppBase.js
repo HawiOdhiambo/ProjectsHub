@@ -383,16 +383,7 @@ if(countryPage===false && homepage=== false && countryProjectPage===true && home
   
 
 }
-/*
-            <Route exact path='/home/country/:countryName/project/:projectTitle'
-          render={({match})=> <CountryProjectPage match={match} initializeCountryProjectPage={this.initializeCountryProjectPage}
-                  projectTitleLocation={projectTitleLocation} p_idLocation={p_idLocation} countryName={markerLocation} pageLocation={pageLocation} changePageLocation={this.changePageLocation}/>} />
 
-
-
- 
-
-*/
 
 
 export default AppBase;
