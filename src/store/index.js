@@ -1,17 +1,5 @@
 import { createStore, action } from 'easy-peasy';
 
-/*export const store= createStore({
-    filters: {
-        projects: [],
-        countryNameParam: '',
-        projectNameParam:'',
-        unitNameParam:'',
-        ongoingClosedValueParam: true,
-        donorNameParam:''
-    }
-
-});*/
-
 const storeModel ={
    appStore:{
           homepage:true,
@@ -50,54 +38,118 @@ const storeModel ={
       let element=event.target;
       let markerLocation=element.getAttribute('markerlocation');
 
-     state.appStore={homepage:false, countryPage: true, countryProjectPage: false, homepageProjectPage: false, displayFilterCountryPage:false, displayFilterResults:false,
-     displayFilterProjectPage:false,  displayFilterCountryProjectPage:false, markerLocation: markerLocation, pageLocation: ''} 
-
+      state.appStore.homepage = false;
+      state.appStore.countryPage = true;
+      state.appStore.countryProjectPage = false;
+      state.appStore.homepageProjectPage = false;
+      state.appStore.displayFilterCountryPage =false;
+      state.appStore.displayFilterResults =false;
+      state.appStore.displayFilterProjectPage =false;
+      state.appStore.displayFilterCountryProjectPage =false; 
+      state.appStore.markerLocation = markerLocation;
+      state.appStore.pageLocation = '';
+    
    }),
-    handleDisplayHomePageProjectPage:action((state, {projectTitle, p_id, pageLocation})=>{
+
+    handleDisplayHomePageProjectPage:action((state, {project_title, p_id, pageLocation})=>{
      
-        state.appStore={homepageProjectPage: true, projectTitleLocation:projectTitle, p_idLocation:p_id, homepage:false, countryPage: false, countryProjectPage: false, displayFilterCountryPage:false, displayFilterResults:false,
-         displayFilterProjectPage:false,  displayFilterCountryProjectPage:false, pageLocation: pageLocation }
+        state.appStore.homepageProjectPage =  true;
+        state.appStore.projectTitleLocation = project_title;
+        state.appStore.p_idLocation = p_id;
+        state.appStore.homepage = false;
+        state.appStore.countryPage =  false;
+        state.appStore.countryProjectPage =  false;
+        state.appStore.displayFilterCountryPage = false;
+        state.appStore.displayFilterResults = false;
+        state.appStore.displayFilterProjectPage = false;  
+        state.appStore.displayFilterCountryProjectPage = false;
+        state.appStore.pageLocation =  pageLocation;
 
      }),
 
         //onclick projectName in countryPage
-      handleDisplayCountryPageProjectPage: action((state, {projectTitle, p_id, pageLocation})=>{
+      handleDisplayCountryPageProjectPage: action((state, {project_title, p_id, pageLocation})=>{
          
-           state.appStore={homepage:false, countryPage: false, countryProjectPage: true, homepageProjectPage: false, 
-              projectTitleLocation:projectTitle, p_idLocation:p_id, pageLocation: pageLocation, 
-             displayFilterCountryPage:false, displayFilterResults:false, displayFilterCountryProjectPage:false, displayFilterProjectPage:false }
+           state.appStore.homepage = false;
+           state.appStore.countryPage =  false;
+           state.appStore.countryProjectPage =  true;
+           state.appStore.homepageProjectPage =  false; 
+           state.appStore.projectTitleLocation = project_title;
+           state.appStore.p_idLocation = p_id;
+           state.appStore.pageLocation =  pageLocation;
+
+           state.appStore.displayFilterCountryPage = false;
+           state.appStore.displayFilterResults = false;
+           state.appStore.displayFilterCountryProjectPage = false;
+           state.appStore.displayFilterProjectPage = false;
 
       }),
       //set the state markerLocation to  the marker location entered in the url.
       initializeCountryPage: action((state, markerLocation)=>{
 
-         state.appStore={homepage:false, countryPage: true, countryProjectPage: false, homepageProjectPage: false, displayFilterCountryPage:false,displayFilterResults:false,
-         displayFilterProjectPage:false,  displayFilterCountryProjectPage:false, projectTitleLocation:"", p_idLocation: "", markerLocation: markerLocation}
+         state.appStore.homepage = false;
+         state.appStore.countryPage =  true;
+         state.appStore.countryProjectPage =  false;
+         state.appStore.homepageProjectPage =  false;
+         state.appStore.displayFilterCountryPage = false;
+         state.appStore.displayFilterResults = false;
+
+         state.appStore.displayFilterProjectPage = false; 
+         state.appStore.displayFilterCountryProjectPage = false;
+         state.appStore.projectTitleLocation = "";
+
+         state.appStore.p_idLocation =  "";
+         state.appStore.markerLocation =  markerLocation;
 
       }),
 
       //initiialize the project page
       initializeCountryProjectPage: action((state, {project_title, markerLocation, p_idLocation, pageLocation}) => {
         
-        state.appStore={homepage:false, countryPage: false, countryProjectPage:true, homepageProjectPage: false, 
+        state.appStore.homepage = false;
+        state.appStore.countryPage =  false; 
+        state.appStore.countryProjectPage = true;
+        state.appStore.homepageProjectPage =  false;
+        state.appStore.displayFilterCountryPage = false;
+        state.appStore.displayFilterResults = false;
+        state.appStore.displayFilterProjectPage = false;
+        state.appStore.displayFilterCountryProjectPage = false; 
 
-                displayFilterCountryPage:false,displayFilterResults:false, displayFilterProjectPage:false,  displayFilterCountryProjectPage:false, 
-
-              projectTitleLocation: project_title, p_idLocation: p_idLocation, markerLocation: markerLocation, pageLocation: pageLocation}
+        state.appStore.projectTitleLocation = project_title;
+        state.appStore.p_idLocation =  p_idLocation;
+        state.appStore.markerLocation =  markerLocation;
+        state.appStore.pageLocation =  pageLocation;
 
      }),
 
      //initializes the homepage
       whenHomePage:action((state) => {
 
-        state.appStore={homepage:true, countryPage: false, countryProjectPage:false, homepageProjectPage: false, displayFilterCountryPage:false,displayFilterResults:false,
-         displayFilterProjectPage:false,  displayFilterCountryProjectPage:false, projectTitleLocation:"", p_idLocation: "", markerLocation: ""};
+        state.appStore.homepage = true; 
+        state.appStore.countryPage =  false; 
+        state.appStore.countryProjectPage = false;
+        state.appStore.homepageProjectPage =  false;
+        state.appStore.displayFilterCountryPage = false;
+        state.appStore.displayFilterResults = false;
+        state.appStore.displayFilterProjectPage = false;
+        state.appStore.displayFilterCountryProjectPage = false;
+        state.appStore.projectTitleLocation = "";
+        state.appStore.p_idLocation =  "";
+        state.appStore.markerLocation =  "";
       }),
 
       initializeHomePageProjectPage:action((state, {projectTitle, p_idLocation}) => {
-         state.appStore={homepage:false, countryPage: false, countryProjectPage:false, homepageProjectPage: true, displayFilterCountryPage:false,displayFilterResults:false,
-         displayFilterProjectPage:false,  displayFilterCountryProjectPage:false, projectTitleLocation:projectTitle, p_idLocation: p_idLocation, markerLocation: ""};
+         state.appStore.homepage = false;
+         state.appStore.countryPage =  false;
+         state.appStore.countryProjectPage = false; 
+         state.appStore.homepageProjectPage =  true; 
+         state.appStore.displayFilterCountryPage = false;
+         state.appStore.displayFilterResults = false;
+         state.appStore.displayFilterProjectPage = false;  
+         state.appStore.displayFilterCountryProjectPage = false;
+         state.appStore.projectTitleLocation = projectTitle;
+         state.appStore.p_idLocation =  p_idLocation; 
+         state.appStore.markerLocation =  "";
 
       }),
 
@@ -300,7 +352,7 @@ const storeModel ={
          searchFilterParams:{ countryNameParam: '', unitNameParam: '', ongoingClosedValueParam:'', 
                        donorNameParam: '', projectNameParam:''},
 
-                       markerLocation:'', projectTitleLocation:'', p_idLocation: '', pageLocation: ''};//enables the results of the search to show on the screen
+        markerLocation:'', projectTitleLocation:'', p_idLocation: '', pageLocation: ''};//enables the results of the search to show on the screen
 
       }),
 
