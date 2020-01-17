@@ -1,5 +1,4 @@
 import { createStore, action } from 'easy-peasy';
-
 const storeModel ={
    appStore:{
           homepage:true,
