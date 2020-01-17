@@ -151,6 +151,9 @@ color: #e3631a;
 .table td, .table th{
   text-align: center;
 }
+.popover{
+  z-Index : 1;
+}
 @media print {
   .navbar{
   display: block;
