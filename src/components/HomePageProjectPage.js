@@ -36,7 +36,9 @@ constructor(props){
   }
    
 
-  props.initializeHomePageProjectPage(this.projectTitle, this.p_idLocation) ;
+  let payload={projectTitle : this.projectTitle, p_idLocation : this.p_idLocation}
+
+  props.initializeHomePageProjectPage(payload) ;
  
 }
 
@@ -50,11 +52,14 @@ constructor(props){
     const linkColor={
       color: '#0093B8'
     }
- //   
     
+     const marginStyle={
+        marginTop : '6rem'
+      }
+
     return (<div> 
 
-              <div className="container">
+              <div className="container" style={marginStyle}>
                   <div className="row" style={row_NavLinks_Style}>
                     <div className="col-sm-12">
                     <Link  to="/"style={linkColor} >Home</Link>/
