@@ -500,7 +500,7 @@ class MapBox extends React.Component {
 
       return(
               <div>
-                <div id="mapContainer" ref="mapContainer" className="mdc-elevation--z1" style={this.props.mapStyle}/>
+                <div id="mapContainer" ref="mapContainer" className="mdc-elevation--z10" style={this.props.mapStyle}/>
                                 
                 <div className="container d-flex mt-2 justify-content-md-center text-muted " style={legendStyle}> 
                   <span className="marker CCPU" style={markerStyle} ></span>Climate Change & Planning Unit
