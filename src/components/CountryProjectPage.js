@@ -63,15 +63,21 @@ constructor(props){
   }
 
   //console.log(this.projectTitle+ this.countryName+ this.p_idLocation+ this.pageLocation)
+  let payLoad = {project_title : this.projectTitle,
+                 markerLocation : this.countryName,
+                 p_idLocation : this.p_idLocation,
+                 pageLocation : this.pageLocation}
  
-  props.initializeCountryProjectPage(this.projectTitle, this.countryName, this.p_idLocation, this.pageLocation);
+  props.initializeCountryProjectPage(payLoad);
   this.handleChangePageLocation=this.handleChangePageLocation.bind(this)
 }
+
 
  handleChangePageLocation(){
       const pageLocation="mapContainer";
       this.props.changePageLocation(pageLocation)
-    }  
+ }
+
 
 
   render(){
@@ -86,10 +92,15 @@ constructor(props){
     }
  
     const markerLocationUrl=this.countryName.split('-').join('_').split(' ').join('-');
+
+     const marginStyle={
+        marginTop : '6rem'
+      }
+
    
     return (<div> 
 
-              <div className="container">
+              <div className="container" style={marginStyle}>
                   <div className="row" style={row_NavLinks_Style}>
                     <div className="col-sm-12">
                       <Link  to="/" style={linkColor} onClick={this.handleChangePageLocation} >Home</Link> /
