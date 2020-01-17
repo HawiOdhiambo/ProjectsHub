@@ -149,10 +149,13 @@ import FetchFilterSummary from "./FetchFilterSummary";
 	    		position: 'relative',
 	     		 };
 
+	    const marginStyle={
+	    	marginTop : '6rem'
+	    }
 
 	    
 	    
-	      		return(<div className="container-fluid mt-5">
+	      		return(<div className="container-fluid" style={marginStyle}>
 						<div className="row ">
 							<div className="col-sm-4">
 
