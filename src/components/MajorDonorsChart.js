@@ -356,8 +356,10 @@ class MajorDonorsChart extends React.Component{
 			
 
 		render(){
+
+
 		
-			return (<div>
+			return (<div className="mt-3">
 					
 					<div id="MajorDonorsCanvas" ref="MajorDonorsCanvas" ></div> 
 					
