@@ -237,13 +237,14 @@ class FilterCountryPage extends React.Component{
         color: '#6B662A'
       }
 
+      const marginStyle={
+        marginTop : '5rem'
+      }
 
-    console.log("FilterCountryPage")
-     console.log(this.props)
     
 		return (<div>
 
-              <div className="container">
+              <div className="container" style={marginStyle} >
                   <div className="row" style={row_NavLinks_Style}>
                     <div className="col-sm-12">
                         <Link   to={{pathname:"/filter", search:this.props.location.search}} 

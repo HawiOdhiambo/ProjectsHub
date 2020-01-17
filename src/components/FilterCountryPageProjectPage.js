@@ -251,12 +251,15 @@ if(props.markerLocation!==''){
       markerLocationUrl=this.markerLocation.split('-').join('_').split(' ').join('-');
     } 
     
+    const marginStyle={
+        marginTop : '6rem'
+      }
 
  
         
     return (<div> 
 
-              <div className="container">
+              <div className="container" style={marginStyle}>
                   <div className="row" style={row_NavLinks_Style}>
                     <div className="col-sm-12">
                         <Link   to={{pathname:"/filter", search:this.props.match.location.search}} 
