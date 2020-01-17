@@ -38,7 +38,8 @@ if(this.props.countryName===''){
 
   //we restrict the initialization to when the prop.countryName is empty because we are 100% sure in this case the component has not been initialized
   props.initializeCountryPage(this.countryName);
-  this.handleChangePageLocation=this.handleChangePageLocation.bind(this)
+  this.displayHomePageProjectPage = this.displayHomePageProjectPage.bind(this);
+  this.handleChangePageLocation = this.handleChangePageLocation.bind(this)
 
 }
 
@@ -85,6 +86,18 @@ componentDidMount(){
       this.props.changePageLocation(pageLocation)
     }  
 
+ displayHomePageProjectPage(project_title, p_id, pageLocation, e){
+
+    
+      let payLoad={p_id: p_id, project_title: project_title, pageLocation: pageLocation }
+
+     
+
+      this.props.handleDisplayCountryPageProjectPage(payLoad)
+ 
+      
+ }
+
 
  
   render(){
@@ -117,25 +130,22 @@ componentDidMount(){
       const fetchSummaryUrl="http://localhost/projects_hub/proj_hub/public/summary_charts/summary_homeCountryPage.php";
      
       const {totalUnitNumber, ongoingUnitNumber, donorsEngaged, ongoingProjNumber, startYearNumber, uniqueProjNumbers}=this.state.pageData;
-      
-      let donorCirclesRange; //initialize
-
-      if(uniqueProjNumbers===1){
-         donorCirclesRange=[5, 30]
-      }
-      else{
-         donorCirclesRange=[5,50];   
-      }
+    
 
      const projTitleColor={
         color: '#6B662A'
       }
           
+     const marginStyle={
+        marginTop : '6rem'
+      }
 
+      
+      
      
     return (<div>
 
-              <div className="container">
+              <div className="container" style={marginStyle} >
                   <div className="row" style={row_NavLinks_Style}>
                     <div className="col-sm-12">
                         <Link   to={{pathname:"/"}} 
@@ -182,7 +192,7 @@ componentDidMount(){
                         <FetchSummary  fetchSummaryUrl={fetchSummaryUrl} countryName={this.countryName}/>
 
                           <FetchFilterCharts countryName={this.countryName} changeWebPage={this.displayFilterProjectPage} 
-                             handleDisplayProjectPage={this.props.handleDisplayProjectPage}/>
+                             handleDisplayProjectPage={this.displayHomePageProjectPage}/>
 
                    </div> 
                    
