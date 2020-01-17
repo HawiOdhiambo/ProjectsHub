@@ -132,12 +132,12 @@ class FetchSummary extends React.Component{
 
 	
 
-		return(<div style={summaryBoxStyle}>
+		return(<div  className="mdc-elevation--z10" style={summaryBoxStyle}>
 				{
 					
 					summaryData.map((summary, index)=>{
 						
-					  return (<span  style={Object.assign(summaryVariableStyle[index], summaryStyle)} key={index}>
+					  return (<span   style={Object.assign(summaryVariableStyle[index], summaryStyle)} key={index}>
 					  				<h1>{summary.number}</h1>
 					  				<p>{summary.description}</p>
 					  				</span>)
